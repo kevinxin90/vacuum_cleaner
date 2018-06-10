@@ -23,7 +23,7 @@ def single_turn(run_time):
 	sleep(run_time)
 
 def spiral_move(run_time, turn_num):
-	for i in (turn_num):
+	for i in range(turn_num):
 		single_turn(run_time)
 
 def main():
