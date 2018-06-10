@@ -86,10 +86,19 @@ class CarController:
         self.bw.stop()
 
     def moveRectangle(self, t):
-        for i in range(4):
-            self.moveForward(t)
+        self.moveForward(t)
+        self.turnLeftNinty()
+        for i in range(3):
+            self.moveForward(t+0.2)
             self.turnLeftNinty()
         self.bw.stop()
+
+
+    def moveMultipleRectange(self, num):
+        for i in range(num):
+            t = i + 1
+            self.moveRectangle(t)
+
 
     def extract_barcode_location(self) :
         """
