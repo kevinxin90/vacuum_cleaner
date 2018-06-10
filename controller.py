@@ -75,11 +75,17 @@ class CarController:
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(1)
+        time.sleep(1.1)
         self.turnStraight()
         self.bw.forward()
         self.bw.speed = 40
         time.sleep(1)
+        self.bw.stop()
+
+    def moveRectangle(self, t):
+        for i in range(4):
+            self.moveForward(t)
+            self.turnLeftNinty()
         self.bw.stop()
 
     def extract_barcode_location(self) :
