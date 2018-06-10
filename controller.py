@@ -1,7 +1,7 @@
 from __future__ import print_function
 from picar import front_wheels, back_wheels
 import picar
-from time import sleep
+import time
 import cv2
 #from pyzbar.pyzbar import decode
 
