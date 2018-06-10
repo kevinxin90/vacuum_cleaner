@@ -1,3 +1,4 @@
+from __future__ import print_function
 from time import sleep
 
 ###############################################################
@@ -14,7 +15,6 @@ fw = front_wheels.Front_Wheels()
 
 fw._angle = {'straight': 90, 'left': 20, 'right': 160}
 
-print(fw._angle)
 
 def spiral_move(turn_angle, run_time):
 	fw.turn(turn_angle)
