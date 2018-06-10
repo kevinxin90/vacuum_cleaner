@@ -71,11 +71,11 @@ class CarController:
         self.turnLeft()
         self.bw.backward()
         self.bw.speed = 40
-        time.sleep(2)
+        time.sleep(3)
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(2)
+        time.sleep(3)
         self.turnStraight()
         self.bw.stop()
 
