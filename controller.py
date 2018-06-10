@@ -44,14 +44,14 @@ class CarController:
         turn front wheel to the left
         """
         self.fw.turn_left()
-        time.sleep(0.5)
+        time.sleep(1)
     
     def turnRight(self, angle=0):
         """
         turn front wheel to the right
         """
         self.fw.turn_right()
-        time.sleep(0.5)
+        time.sleep(1)
     
     def turnStraight(self, angle=0):
         """
@@ -75,7 +75,7 @@ class CarController:
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(1.8)
+        time.sleep(2)
         self.turnStraight()
         self.bw.forward()
         self.bw.speed = 40
