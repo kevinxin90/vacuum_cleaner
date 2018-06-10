@@ -19,22 +19,22 @@ fw._angle = {'straight': 80, 'left': 20, 'right': 140}
 def spiral_move(run_time):
 	# first left turn
 	fw.turn_left()
-	sleep(2)
+	sleep(2.5)
 	fw.turn_straight()
 	sleep(run_time)
 	# second left turn
 	fw.turn_left()
-	sleep(2)
+	sleep(2.5)
 	fw.turn_straight()
 	sleep(run_time)
 	# third left turn
 	fw.turn_left()
-	sleep(2)
+	sleep(2.5)
 	fw.turn_straight()
 	sleep(run_time)
 	# fourth left turn
 	fw.turn_left()
-	sleep(2)
+	sleep(2.5)
 	fw.turn_straight()
 	sleep(run_time)
 
