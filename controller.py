@@ -13,7 +13,7 @@ bw = back_wheels.Back_Wheels()
 # front wheel controls the angle while the vehicle turns
 fw = front_wheels.Front_Wheels()
 
-fw._angle = {'straight': 82, 'left': 30, 'right': 130}
+fw._angle = {'straight': 80, 'left': 30, 'right': 130}
 
 
 def single_turn(run_time):
@@ -37,3 +37,4 @@ def main():
 		spiral_move(run_time, turn_num)
 		print('this loop ends!')
 	bw.stop()
+	fw.turn_straight()
