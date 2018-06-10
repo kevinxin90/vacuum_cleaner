@@ -31,7 +31,7 @@ def main():
 	bw.speed = 40
 	for i in range(10):
 		print('current front wheel angle parameter: {}'.format(fw._angle))
-		turn_num = (i+1) * 4 
+		turn_num = 4
 		run_time = i 
 		print('current loop number: {}, current run time: {}'.format(i, run_time))
 		spiral_move(run_time, turn_num)
