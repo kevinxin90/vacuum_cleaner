@@ -17,10 +17,10 @@ fw._angle = {'straight': 82, 'left': 30, 'right': 130}
 
 
 def single_turn(run_time):
-	fw.turn_left()
-	sleep(3)
 	fw.turn_straight()
 	sleep(run_time)
+	fw.turn_left()
+	sleep(3.5)
 
 def spiral_move(run_time, turn_num):
 	for i in range(turn_num):
