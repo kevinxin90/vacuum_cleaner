@@ -13,24 +13,36 @@ bw = back_wheels.Back_Wheels()
 # front wheel controls the angle while the vehicle turns
 fw = front_wheels.Front_Wheels()
 
-fw._angle = {'straight': 80, 'left': 20, 'right': 120145}
+fw._angle = {'straight': 80, 'left': 30, 'right': 130}
 
 
-def spiral_move(turn_angle, run_time):
-	fw.turn(turn_angle)
+def spiral_move(run_time):
+	# first left turn
+	fw.turn_left()
 	sleep(0.5)
-	bw.backward()
-	bw.speed = 60
+	fw.turn_straight()
 	sleep(run_time)
-	bw.stop()
-	sleep(0.1)
+	# second left turn
+	fw.turn_left()
+	sleep(0.5)
+	fw.turn_straight()
+	sleep(run_time)
+	# third left turn
+	fw.turn_left()
+	sleep(0.5)
+	fw.turn_straight()
+	sleep(run_time)
+	# fourth left turn
+	fw.turn_left()
+	sleep(0.5)
+	fw.turn_straight()
+	sleep(run_time)
 
 def main():
 	for i in range(30):
 		print('current front wheel angle parameter: {}'.format(fw._angle))
-		turn_angle = 30 + i*2
-		run_time = i * 10
-		print('current loop number: {}, current turning angle: {}, current run time: {}'.format(i, turn_angle, run_time))
-		spiral_move(turn_angle, run_time)
+		run_time = i * 2
+		print('current loop number: {}, current run time: {}'.format(i, run_time))
+		spiral_move(run_time)
 		print('this loop ends!')
 	bw.stop()
