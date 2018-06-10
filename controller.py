@@ -3,7 +3,7 @@ from picar import front_wheels, back_wheels
 import picar
 from time import sleep
 import cv2
-from pyzbar.pyzbar import decode
+#from pyzbar.pyzbar import decode
 
 
 class CarController:
@@ -81,7 +81,7 @@ class CarController:
         """
         # Load input image
         _, bgr_image = img.read()
-        barcode_info = decode(bgr_image)
+        #barcode_info = decode(bgr_image)
         if barcode_info:
             # only return the barcode location info
             return barcode_info[0][2]
