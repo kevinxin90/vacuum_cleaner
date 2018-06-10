@@ -79,7 +79,7 @@ class CarController:
         self.turnStraight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(0.5)
+        time.sleep(1)
         self.bw.stop()
 
     def extract_barcode_location(self) :
