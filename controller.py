@@ -31,3 +31,4 @@ def main():
 		print('current loop number: {}, current turning angle: {}, current run time: {}'.format(i, turn_angle, run_time))
 		spiral_move(turn_angle, run_time)
 		print('this loop ends!')
+	bw.stop()
