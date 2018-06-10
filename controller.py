@@ -77,7 +77,7 @@ class CarController:
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(1.6)
+        time.sleep(1.4)
         self.bw.stop()
         self.turnStraight()
         self.bw.forward()
@@ -88,15 +88,17 @@ class CarController:
     def moveRectangle(self, t):
         self.moveForward(t)
         self.turnLeftNinty()
-        for i in range(3):
+        for i in range(2):
             self.moveForward(t+0.2)
             self.turnLeftNinty()
+        self.moveForward(t+0.4)
+        self.turnLeftNinty()
         self.bw.stop()
 
 
     def moveMultipleRectange(self, num):
         for i in range(num):
-            t = (i+1)*2
+            t = i + 2
             print('current run time is {}'.format(t))
             self.moveRectangle(t)
 
