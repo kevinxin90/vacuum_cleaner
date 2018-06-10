@@ -96,7 +96,8 @@ class CarController:
 
     def moveMultipleRectange(self, num):
         for i in range(num):
-            t = i + 1
+            t = (i+1)*2
+            print('current run time is {}'.format(t))
             self.moveRectangle(t)
 
 
