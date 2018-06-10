@@ -19,7 +19,7 @@ fw._angle = {'straight': 90, 'left': 20, 'right': 160}
 def spiral_move(turn_angle, run_time):
 	fw.turn(turn_angle)
 	bw.backward()
-	bw.speed = 30
+	bw.speed = 60
 	sleep(run_time)
 	bw.stop()
 
