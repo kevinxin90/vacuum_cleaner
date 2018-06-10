@@ -9,7 +9,7 @@ import cv2
 class CarController:
     def __init__(self):
         self.fw = front_wheels.Front_Wheels()
-        self.fw._angle = {'straight': 82, 'left': 32, 'right': 132}
+        self.fw._angle = {'straight': 90, 'left': 32, 'right': 132}
         self.bw = back_wheels.Back_Wheels()
         self.speed = 40
     
