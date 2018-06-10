@@ -75,11 +75,11 @@ class CarController:
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(4)
+        time.sleep(4.5)
         self.turnStraight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(1)
+        time.sleep(0.5)
         self.bw.stop()
 
     def moveRectangle(self, t):
