@@ -14,6 +14,8 @@ fw = front_wheels.Front_Wheels()
 
 fw._angle = {'straight': 90, 'left': 20, 'right': 160}
 
+print(fw._angle)
+
 def spiral_move(turn_angle, run_time):
 	fw.turn(turn_angle)
 	bw.backward()
@@ -23,6 +25,7 @@ def spiral_move(turn_angle, run_time):
 
 def main():
 	for i in range(20):
+		print('current front wheel angle parameter: {}'.format(fw._angle))
 		turn_angle = 20 + i
 		run_time = 1 + i * 4
 		print('current loop number: {}, current turning angle: {}, current run time: {}'.format(i))
