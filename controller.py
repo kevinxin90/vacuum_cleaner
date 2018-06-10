@@ -13,28 +13,28 @@ bw = back_wheels.Back_Wheels()
 # front wheel controls the angle while the vehicle turns
 fw = front_wheels.Front_Wheels()
 
-fw._angle = {'straight': 80, 'left': 30, 'right': 130}
+fw._angle = {'straight': 80, 'left': 20, 'right': 140}
 
 
 def spiral_move(run_time):
 	# first left turn
 	fw.turn_left()
-	sleep(1)
+	sleep(2)
 	fw.turn_straight()
 	sleep(run_time)
 	# second left turn
 	fw.turn_left()
-	sleep(1)
+	sleep(2)
 	fw.turn_straight()
 	sleep(run_time)
 	# third left turn
 	fw.turn_left()
-	sleep(1)
+	sleep(2)
 	fw.turn_straight()
 	sleep(run_time)
 	# fourth left turn
 	fw.turn_left()
-	sleep(1)
+	sleep(2)
 	fw.turn_straight()
 	sleep(run_time)
 
