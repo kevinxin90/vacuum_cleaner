@@ -67,15 +67,18 @@ class CarController:
         The goal of the code is to make the car position stay the same
         while changing its "theta" to pi/2 (90degree)
         """
+        self.bw.stop()
         self.fw.turn_straight()
         self.turnLeft()
         self.bw.backward()
         self.bw.speed = 40
         time.sleep(3)
+        self.bw.stop()
         self.turnRight()
         self.bw.forward()
         self.bw.speed = 40
-        time.sleep(2)
+        time.sleep(2.5)
+        self.bw.stop()
         self.turnStraight()
         self.bw.forward()
         self.bw.speed = 40
