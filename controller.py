@@ -19,7 +19,7 @@ class CarController:
         """
         self.turnStraight()
         time.sleep(0.5)
-        self.bw.forward()
+        self.bw.backward()
         self.bw.speed = self.speed
         # make the car run for t second
         if t>0:
@@ -32,7 +32,7 @@ class CarController:
         """
         self.turnStraight()
         time.sleep(0.5)
-        self.bw.backward()
+        self.bw.forward()
         self.bw.speed = self.speed
         # make the car run for t seconds
         if t>0: 
