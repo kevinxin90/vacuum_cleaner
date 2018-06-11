@@ -104,7 +104,7 @@ class CarController:
             self.moveRectangle(t)
 
 
-        def extract_barcode_location(self) :
+    def extract_barcode_location(self) :
         """
         This function tries to extract the barcode location
         information from the image by using pyzbar
