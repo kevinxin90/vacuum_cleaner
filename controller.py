@@ -130,7 +130,7 @@ class CarController:
         BW_MODE = 1
         fw_angle = 90
 
-        print "Begin!"
+        #print "Begin!"
         while True:
             left = 0            # initialize left to be 0
             top = 0             # initialize top to be 0
@@ -162,7 +162,7 @@ class CarController:
                 else:
                     self.bw.forward()
                 self.bw.speed = self.speed
-                print "Couldn't detect barcode! backwheel keep running"
+                #print "Couldn't detect barcode! backwheel keep running"
                 sleep(0.3)
 
             # here we start to deal with cases where we could detect barcode
@@ -173,20 +173,20 @@ class CarController:
                 """
                 # deal with case where barcode is on the left side of the image
                 if left + width/2 > MIDDLE_POS + MIDDLE_TOLERANT:
-                    print "The car is leaning towards the left!"
+                    #print "The car is leaning towards the left!"
                     # turn the steering angle to the right slightly
                     fw_angle += 0.2
                     self.fw.turn(fw_angle)
                     sleep(0.2)
                 # deal with case where barcode is on the right side of the image
                 elif left + width/2 < MIDDLE_POS - MIDDLE_TOLERANT:
-                    print "The car is leaning towards the right!"
+                    #print "The car is leaning towards the right!"
                     # turn the steering angle to the left slightly
                     fw_angle -= 0.2
                     self.fw.turn(fw_angle)
                     sleep(0.2)
                 else:
-                    print "The car is right on track!"
+                    #print "The car is right on track!"
                 #################################################################
                 """
                 Next, utilize barcode to detect whether the car has reached target position
@@ -197,7 +197,7 @@ class CarController:
                 # and now the car has passed target position
                 # we need to move the car backward
                 if width > BARCODE_WIDTH + MIDDLE_TOLERANT:
-                    print "Width is larger than expected! Start backwarding!"
+                    #print "Width is larger than expected! Start backwarding!"
                     # moving back
                     self.bw.backward()
                     BW_MODE = 0
@@ -207,7 +207,7 @@ class CarController:
                 # this means the car still hasn't reached target position
                 # we need to move the car forward
                 elif width < BARCODE_WIDTH - MIDDLE_TOLERANT:
-                    print "Width is smaller than expected! Start forwarding!"
+                    #print "Width is smaller than expected! Start forwarding!"
                     self.bw.forward()
                     BW_MODE = 1
                     self.bw.speed = motor_speed
@@ -215,7 +215,7 @@ class CarController:
                 # stop when we have reached target position
                 # also get out of the while loop
                 else:
-                    print "find it!"
+                    #print "find it!"
                     self.turnStraight()
                     bw.stop()
                     break
