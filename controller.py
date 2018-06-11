@@ -88,9 +88,10 @@ class CarController:
     def moveRectangle(self, t):
         self.moveForward(t)
         self.turnLeftNinty()
-        for i in range(2):
-            self.moveForward(t+0.8)
-            self.turnLeftNinty()
+        self.moveForward(t+0.8)
+        self.turnLeftNinty()
+        self.moveForward(t+0.2)
+        self.turnLeftNinty()
         self.moveForward(t+0.2)
         self.turnLeftNinty()
         self.bw.stop()
