@@ -104,16 +104,120 @@ class CarController:
             self.moveRectangle(t)
 
 
-    def extract_barcode_location(self) :
+        def extract_barcode_location(self) :
         """
         This function tries to extract the barcode location
         information from the image by using pyzbar
         """
         # Load input image
         _, bgr_image = img.read()
-        #barcode_info = decode(bgr_image)
+        barcode_info = decode(bgr_image)
         if barcode_info:
             # only return the barcode location info
             return barcode_info[0][2]
         else:
             return None
+
+    def drive_towards_barcode(self):
+        """
+        This function tries to make the car drive towards barcode
+        in a straight line
+        The barcode is used to help the car to follow the path (straight line)
+        as well as stop at target position
+        """
+        # BW_MODE 1: moving forward
+        # BW_MODE 0: moving backward
+        BW_MODE = 1
+        fw_angle = 90
+
+        print "Begin!"
+        while True:
+            left = 0            # initialize left to be 0
+            top = 0             # initialize top to be 0
+            width = 0           # initialize width to be 0
+            height = 0          # initialize height to be 0
+
+            # try taking 10 images because pyzbar is not so consistent
+            # extract barcode location when we manage to get one barcode detected
+            for i in range(10):
+                barcode_location = self.extract_barcode_location()
+                # check if barcode is detecte
+                if barcode_location:
+                    #print "barcode found!"
+                    #print(barcode_location)
+                    left = barcode_location[0]
+                    top = barcode_location[1]
+                    width = barcode_location[2]
+                    height = barcode_location[3]
+                    break
+
+            """
+            If barcode is not found, keep moving forward or backward
+            """
+            if not barcode_location:
+                # if the barcode could not be detected
+                # keep moving the car forward
+                if BW_MODE == 1:
+                    self.bw.backward()
+                else:
+                    self.bw.forward()
+                self.bw.speed = self.speed
+                print "Couldn't detect barcode! backwheel keep running"
+                sleep(0.3)
+
+            # here we start to deal with cases where we could detect barcode
+            else: 
+                ################################################################
+                """
+                First utilize barcode to detect whether the car leaning towards left or right
+                """
+                # deal with case where barcode is on the left side of the image
+                if left + width/2 > MIDDLE_POS + MIDDLE_TOLERANT:
+                    print "The car is leaning towards the left!"
+                    # turn the steering angle to the right slightly
+                    fw_angle += 0.2
+                    self.fw.turn(fw_angle)
+                    sleep(0.2)
+                # deal with case where barcode is on the right side of the image
+                elif left + width/2 < MIDDLE_POS - MIDDLE_TOLERANT:
+                    print "The car is leaning towards the right!"
+                    # turn the steering angle to the left slightly
+                    fw_angle -= 0.2
+                    self.fw.turn(fw_angle)
+                    sleep(0.2)
+                else:
+                    print "The car is right on track!"
+                #################################################################
+                """
+                Next, utilize barcode to detect whether the car has reached target position
+                """
+                # deal with cases where barcode size in the image is larger than expected
+                # the pyzbar is not so sensitive
+                # this case might happen when pyzbar fails a couple of times
+                # and now the car has passed target position
+                # we need to move the car backward
+                if width > BARCODE_WIDTH + MIDDLE_TOLERANT:
+                    print "Width is larger than expected! Start backwarding!"
+                    # moving back
+                    self.bw.backward()
+                    BW_MODE = 0
+                    self.bw.speed = motor_speed
+                    sleep(0.2)
+                # deal with cases where barcode size is smaller than expected
+                # this means the car still hasn't reached target position
+                # we need to move the car forward
+                elif width < BARCODE_WIDTH - MIDDLE_TOLERANT:
+                    print "Width is smaller than expected! Start forwarding!"
+                    self.bw.forward()
+                    BW_MODE = 1
+                    self.bw.speed = motor_speed
+                    sleep(0.2)
+                # stop when we have reached target position
+                # also get out of the while loop
+                else:
+                    print "find it!"
+                    self.turnStraight()
+                    bw.stop()
+                    break
+            bw.stop()
+            sleep(0.1)
