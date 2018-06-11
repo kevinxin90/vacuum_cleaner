@@ -90,7 +90,7 @@ class CarController:
         self.turnLeftNinty()
         self.moveForward(t+0.8)
         self.turnLeftNinty()
-        self.moveForward(t+0.2)
+        self.moveForward(t+0.4)
         self.turnLeftNinty()
         self.moveForward(t+0.2)
         self.turnLeftNinty()
